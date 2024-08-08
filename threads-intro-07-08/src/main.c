@@ -25,9 +25,8 @@ void thr_function(void *p) {
 
   thr_param_table *data;
   data = (thr_param_table *)p;
-  printf("%d\n", data->id);
   printf("%s\n", data->str);
-
+  printf("%d\n", data->id);
   pthread_exit(&data->id); // al devolver direcciones de memoria, debo pasar por
                            // parametro aquello.
 }
