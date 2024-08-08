@@ -48,7 +48,6 @@ int main(int argc, char *argv[]) {
                     // directamente desde esa referencia.
   *my_pointer = 20;
 
-  // demo de threads
   printf("%d valor nuevo de anothervar por el cambio a traves de referencia \n",
          another_var);
 
