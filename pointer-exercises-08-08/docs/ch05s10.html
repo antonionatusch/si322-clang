@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>10. Ejercicios sobre punteros</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /><link rel="home" href="index.html" title="Arquitectura de sistemas" /><link rel="up" href="ch05.html" title="Los punteros en C" /><link rel="prev" href="ch05s09.html" title="9. Autoevaluación automática" /><link rel="next" href="ch05s11.html" title="11. Actividades" /><meta name="DC.title" content="" /><meta name="DC.description" content="" /><meta name="DC.date" content="2013-10-2" /><meta name="DC.format" content="text/html" /><meta name="DC.language" content="es" /><meta name="DC.publisher" content="Universidad Carlos III de&#10;      Madrid" /><meta name="DC.creator" content="Pablo Basanta Val, Iria Estévez Ayres, Abelardo Pardo" /><link rel="shortcut icon" href="../CSS/ae_64x64.png" type="image/vnd.microsoft.icon" /><link rel="icon" href="../CSS/ae_64x64.png" type="image/vnd.microsoft.icon" /><meta name="Author" content="Abelardo Pardo, Iria Estévez Ayres, Damaris Fuentes Lorenzo, Pablo Basanta Val, y Pedro J. Muñoz Merino" /><meta name="language" content="es" /><link type="text/css" rel="stylesheet" href="../CSS/adagio_style.css" media="all" /><link type="text/css" rel="stylesheet" href="../CSS/as.css" media="all" /><link type="text/css" rel="stylesheet" href="style.css" media="all" /><link type="text/css" rel="stylesheet" href="logo_es.css" media="all" /></head><body id="adagioroot_Computer_architecture_uc3m"><div class="adagio_hidden_elements" id="skip_links"><ul><li><a href="../" accesskey="1">Inicio</a></li><li><a href="#adagio_page_content" accesskey="2">Ir a contenido</a></li><li><a href="#adagio_navigation" accesskey="3">Ir a navegación</a></li></ul></div><div id="adagio_page_navigation"><a name="adagio_navigation" id="adagio_navigation"></a><ul xmlns=""><li><a href="../course_notes/index_es.html">Apuntes</a></li><li><a href="../course_maps/map_es.html">Mapa</a></li><li><a href="../info/material_es.html">Plan</a></li><li><a href="../info/active_learning_es.html">Metodología</a></li><li><a href="../info/syllabus_es.html">Sobre el curso</a></li><li><a href="../info/readings_es.html">Bibliografía</a></li><li><a href="https://aulaglobal2.uc3m.es">Aula Global</a></li></ul></div><div id="adagio_page_header_level1"><h1 id="adagio_institution_name"><a href="http://www.uc3m.es" title="Universidad Carlos III de&#10;      Madrid">Universidad Carlos III de
+      Madrid</a></h1></div><div id="adagio_page_header_level2"><h2 id="adagio_degree_name"><a href="http://www.uc3m.es/portal/page/portal/titulaciones_grado/rama_ing" title="Grado en&#10;      Ing. Telemática/Sist. Audiovisuales/Sist. de Comunicaciones">Grado en
+      Ing. Telemática/Sist. Audiovisuales/Sist. de Comunicaciones</a></h2></div><div id="adagio_page_header_level3"><h3 id="adagio_course_name"><a href="http://www.it.uc3m.es/labas" title="Arquitectura de Sistemas">Arquitectura de Sistemas</a></h3></div><div id="adagio_page_header_level4"><h4 id="adagio_course_edition">Septiembre 2012 - Enero 2013</h4></div><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">10.
+    <span xml:lang="es" lang="es">Ejercicios sobre punteros</span>
+
+  </th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s09.html">Anterior</a> </td><th width="60%" align="center">
+    <span xml:lang="es" lang="es">Los punteros en C</span>
+
+  </th><td width="20%" align="right"> <a accesskey="n" href="ch05s11.html">Siguiente</a></td></tr></table><hr /></div><div id="adagio_page_content"><a name="adagio_page_content_anchor" id="adagio_page_content_anchor"></a><div class="section" title="10. Ejercicios sobre punteros"><div class="titlepage"><div><div><h2 class="title" id="pointer_problems">10.
+    <span xml:lang="es" lang="es">Ejercicios sobre punteros</span>
+
+  </h2></div><div></div></div></div><p xml:lang="es" lang="es">Los siguientes problemas requieren que conozcas los operandos
+  de manipulación de punteros, cómo se sitúan los datos en memoria y el concepto
+  de indirección. Te recomendamos además, que escribas las definiciones de
+  tipos, declaraciones y fragmentos de código en un fichero de texto plano en tu
+  entorno de desarrollo y que compruebes los resultados mediante su compilación
+  y ejecución. Para los ejercicios se suponen los siguientes tamaños de los
+  tipos de datos básicos:</p><div class="informaltable"><a id="pointer_problem_sizes"></a><table border="1"><colgroup><col align="left" class="col1" /><col align="center" class="col2" /></colgroup><thead><tr><th class="table_colored_cell_1" align="center">
+	    <span xml:lang="es" lang="es">Tipo</span>
+
+	  </th><th class="table_colored_cell_1" align="center">
+	    <span xml:lang="es" lang="es">Tamaño</span>
+	     (bytes)
+	  </th></tr></thead><tbody><tr><td align="left">
+	    <code class="code">char</code>, <code class="code">unsigned char</code>
+	  </td><td align="center">1</td></tr><tr><td align="left">
+	    <code class="code">short int</code>, <code class="code">unsigned short int</code>
+	  </td><td align="center">2</td></tr><tr><td align="left">
+	    <code class="code">int</code>, <code class="code">unsigned int</code>, <code class="code">long
+	    int</code>, <code class="code">unsigned long int</code>
+	  </td><td align="center">4</td></tr><tr><td align="left"><code class="code">float</code></td><td align="center">4</td></tr><tr><td align="left">
+	    <code class="code">double</code>, <code class="code">long double</code>
+	  </td><td align="center">8</td></tr><tr><td align="left">
+	    <span xml:lang="es" lang="es">Puntero de cualquier tipo</span>
+
+	  </td><td align="center">4</td></tr></tbody></table></div><p xml:lang="es" lang="es">Suponte que se definen las siguientes estructuras de datos
+  para guardar la información sobre las celdas con las que tiene posibilidad de
+  conexión un teléfono móvil:</p><div class="informaltable"><table border="1"><colgroup><col align="center" class="col1" /><col align="left" class="col2" /></colgroup><tbody><tr><td align="center"><pre class="programlisting">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td align="left"><pre class="programlisting">#define SIZE 100
+/* Información sobre la celda */
+<span class="command"><strong>struct</strong></span> informacion_celda
+{
+    char nombre[SIZE];                /* Nombre de la celda */
+    unsigned int identificador;      /* Número identificador */
+    float calidad_senal;              /* Calidad de la señal (entre 0 y 100) */
+    struct informacion_operador *ptr_operador; /* Puntero a una segunda estructura */
+};
+
+/* Información sobre el operador */
+<span class="command"><strong>struct</strong></span> informacion_operador
+{
+    char nombre[SIZE];           /* Cadena de texto con el nombre */
+    unsigned int prioridad;     /* Prioridad de conexión */
+    unsigned int ultima_comprob; /* Fecha de la última comprobación */
+};
+</pre></td></tr></tbody></table></div><p xml:lang="es" lang="es">Responde a las siguientes preguntas:</p><div class="orderedlist"><ol><li class="listitem"><p xml:lang="es" lang="es">¿Qué tamaño en bytes ocupa una variable de tipo
+      <code class="code">struct informacion_celda</code> en memoria?</p></li><li class="listitem"><p xml:lang="es" lang="es">Las siguientes dos líneas declaran dos variables.
+      	¿Cuál de ellas ocupa más espacio en memoria?</p><pre xml:lang="es" class="programlisting" lang="es">struct informacion_celda a;
+struct informacion_celda *b;</pre></li><li class="listitem"><p xml:lang="es" lang="es">¿Qué tamaño tienen las siguientes variables?</p><pre xml:lang="es" class="programlisting" lang="es">struct informacion_celda *ptr1, *ptr2;
+struct informacion_operador *i1, *i2;</pre></li><li class="listitem"><p xml:lang="es" lang="es">Si una variable de tipo <code class="code">struct
+      	informacion_celda</code> está almacenada en la posición de memoria 100,
+      	¿qué dirección tienen cada uno de sus campos?</p></li><li class="listitem"><p xml:lang="es" lang="es">Si una variable de tipo <code class="code">struct informacion_celda
+      	*</code> está almacenada en la posición de memoria 100, ¿qué dirección
+      	tiene cada uno de sus campos?</p></li><li class="listitem"><p xml:lang="es" lang="es">¿Qué cambios debes hacer en las definiciones de la parte
+      izquierda para que sean equivalentes a las descripciones de la parte
+      derecha?</p><div class="informaltable"><table border="1"><colgroup><col align="left" class="col1" /><col align="center" class="col2" /></colgroup><tbody><tr><td align="left">
+		<pre xml:lang="es" class="programlisting" lang="es">struct informacion_celda c;
+struct informacion_celda **c_ptr;</pre>
+
+              </td><td align="center">
+		<pre xml:lang="es" class="programlisting" lang="es">// variable de tipo estructura informacion_celda
+// puntero a estructura informacion_celda;</pre>
+
+	      </td></tr></tbody></table></div></li><li class="listitem"><p xml:lang="es" lang="es">¿Se pueden hacer las siguientes asignaciones? ¿Qué declara
+      exactamente la linea 3?</p><div class="informaltable"><table border="1"><colgroup><col align="center" class="col1" /><col align="left" class="col2" /></colgroup><tbody><tr><td align="center"><pre class="programlisting">1
+2
+3
+4</pre></td><td align="left"><pre class="programlisting">struct informacion_celda c;
+struct informacion_celda *c_ptr = &amp;c;
+struct informacion_celda d;
+struct informacion_celda *d_ptr = c_ptr;</pre></td></tr></tbody></table></div></li><li class="listitem"><p xml:lang="es" lang="es">Considera la siguiente declaración y asignación:</p><div class="informaltable"><table border="1"><colgroup><col align="center" class="col1" /><col align="left" class="col2" /></colgroup><tbody><tr><td align="center"><pre class="programlisting">1
+2
+3
+4</pre></td><td align="left"><pre class="programlisting">struct informacion_celda c;
+struct informacion_celda *c_ptr;
+
+c_ptr = *c;</pre></td></tr></tbody></table></div><p xml:lang="es" lang="es">¿Es correcta? Y si lo es, ¿Qué contiene la variable
+      <code class="code">c_ptr</code> (no se pregunta por lo que apunta, sino su
+      contenido)?</p></li><li class="listitem"><p xml:lang="es" lang="es">Si se declara una variable como <span class="quote">“<span class="quote"><code class="code">struct
+    	informacion_celda c;</code></span>”</span>, ¿qué tipo de datos es el que
+    	devuelve la expresión <span class="quote">“<span class="quote"><code class="code">&amp;c.ptr_operador</code></span>”</span>?
+      </p></li><li class="listitem"><p xml:lang="es" lang="es">Dado el siguiente código:</p><div class="informaltable"><table border="1"><colgroup><col align="center" class="col1" /><col align="left" class="col2" /></colgroup><tbody><tr><td align="center"><pre class="programlisting">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td align="left"><pre class="programlisting">struct pack3
+{
+    int a;
+};
+struct pack2
+{
+    int b;
+    struct pack3 *next;
+};
+struct pack1
+{
+    int c;
+    struct pack2 *next;
+};
+
+struct pack1 data1, *data_ptr;
+struct pack2 data2;
+struct pack3 data3;
+
+<span class="command"><strong>data1.c = 30;
+data2.b = 20;
+data3.a = 10;
+dataPtr = &amp;data1;
+data1.next = &amp;data2;
+data2.next = &amp;data3;</strong></span></pre></td></tr></tbody></table></div><p xml:lang="es" lang="es">Decide si las siguientes expresiones son correctas y en
+      caso de que lo sean escribe a que datos se acceden.</p><div class="informaltable"><table border="1"><colgroup><col align="left" class="col1" /><col align="center" class="col2" /><col align="center" class="col2" /></colgroup><thead><tr><th class="table_colored_cell_1" align="center">
+		<span xml:lang="es" lang="es">Expresión</span>
+
+	      </th><th class="table_colored_cell_1" align="center">
+		<span xml:lang="es" lang="es">Correcta</span>
+
+	      </th><th class="table_colored_cell_1" align="center">
+		<span xml:lang="es" lang="es">Valor</span>
+
+	      </th></tr></thead><tbody><tr><td align="left"><code class="code">data1.c</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;c</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr.c</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data1.next-&gt;b</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;next-&gt;b</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr.next.b</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;next.b</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">(*(data_ptr-&gt;next)).b</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data1.next-&gt;next-&gt;a</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;next-&gt;next.a</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;next-&gt;next-&gt;a</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;next-&gt;a</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr><tr><td align="left"><code class="code">data_ptr-&gt;next-&gt;next-&gt;b</code></td><td align="center">
+
+	      </td><td align="center">
+
+	      </td></tr></tbody></table></div></li><li class="listitem"><p xml:lang="es" lang="es">Supongamos que se escriben las siguientes declaraciones y
+      asignaciones en un programa:</p><div class="informaltable"><table border="1"><colgroup><col align="center" class="col1" /><col align="left" class="col2" /></colgroup><tbody><tr><td align="center"><pre class="programlisting">1
+2
+3
+4</pre></td><td align="left"><pre class="programlisting">info_celda c;
+info_celda_ptr c_ptr = &amp;c;
+info_operador op;
+info_operador_ptr op_ptr = &amp;op;</pre></td></tr></tbody></table></div><p xml:lang="es" lang="es">La estructura <span class="quote">“<span class="quote"><code class="code">c</code></span>”</span> contiene el
+      campo <span class="quote">“<span class="quote"><code class="code">ptr_operador</code></span>”</span> precisamente para almacenar
+      la información relativa al operador. ¿Qué expresión hay que usar en el
+      código para guardar la información del operador
+      <span class="quote">“<span class="quote"><code class="code">op</code></span>”</span> como parte de la estructura
+      <span class="quote">“<span class="quote"><code class="code">c</code></span>”</span>? Teniendo en cuenta los valores que se
+      asignan en las declaraciones, escribe cuatro versiones equivalentes de
+      esta expresión (utiliza <span class="quote">“<span class="quote"><code class="code">c</code></span>”</span>,
+      <span class="quote">“<span class="quote"><code class="code">c_ptr</code></span>”</span>, <span class="quote">“<span class="quote"><code class="code">op</code></span>”</span> y
+      <span class="quote">“<span class="quote"><code class="code">op_ptr</code></span>”</span>).</p></li><li class="listitem"><p xml:lang="es" lang="es">Supón ahora que la aplicación en la que se usan estas
+      estructuras necesita almacenar la información para un máximo de 10
+      celdas. ¿Qué estructura de datos definirías?</p></li><li class="listitem"><p xml:lang="es" lang="es">Escribe un bucle con la variable declarada en el ejercicio
+      anterior que asigne al campo <code class="code">ptr_operador</code> el valor
+      vacío.</p></li><li class="listitem"><p xml:lang="es" lang="es">La información sobre las celdas que se almacena en la
+      estructura del ejercicio anterior la debe utilizar la aplicación para
+      <span class="emphasis"><em>recordar</em></span> cuál de ellas es la más próxima. Esta
+      información puede cambiar a lo largo del tiempo. ¿Qué tipo de datos
+      sugieres para almacenar esta información? Ofrece dos alternativas.</p></li><li class="listitem"><p xml:lang="es" lang="es">Se dispone de una estructura de tipo
+      <span class="quote">“<span class="quote"><code class="code">info_celda c</code></span>”</span> que a su vez, en el campo
+      <span class="quote">“<span class="quote"><code class="code">ptr_operador</code></span>”</span> tiene un puntero a una estructura
+      <span class="quote">“<span class="quote"><code class="code">info_operador cr</code></span>”</span>. ¿Qué tamaño tiene la estructura
+      <span class="quote">“<span class="quote"><code class="code">c</code></span>”</span>? ¿Qué tamaño total ocupa la información
+      incluyendo la información sobre el operador?</p></li><li class="listitem"><p xml:lang="es" lang="es">Escribe el cuerpo de la siguiente función:</p><pre xml:lang="es" class="programlisting" lang="es">void fill_in(info_celda_ptr dato, unsigned int id, float sq, info_operador_ptr op_ptr)</pre><p xml:lang="es" lang="es">que asigna el valor de los parámetros
+      <span class="quote">“<span class="quote"><code class="code">id</code></span>”</span>, <span class="quote">“<span class="quote"><code class="code">sq</code></span>”</span> y
+      <span class="quote">“<span class="quote"><code class="code">op_ptr</code></span>”</span> a los campos
+      <span class="quote">“<span class="quote"><code class="code">identificador</code></span>”</span>,
+      <span class="quote">“<span class="quote"><code class="code">calidad_senal</code></span>”</span> y
+      <span class="quote">“<span class="quote"><code class="code">ptr_operador</code></span>”</span> respectivamente de la estructura
+      apuntada por el parámetro <span class="quote">“<span class="quote"><code class="code">dato</code></span>”</span>.</p><p xml:lang="es" lang="es">¿Cómo explicas que esta función asigne valores a unos
+      campos y no devuelva resultado?</p></li><li class="listitem"><p xml:lang="es" lang="es">Considera las dos versiones del siguiente programa:</p><div class="informaltable"><table border="1"><colgroup><col align="center" class="col1" /><col align="center" class="col2" /></colgroup><thead><tr><th class="head_reverse" align="center">
+		<span xml:lang="es" lang="es">Versión 1</span>
+
+	      </th><th class="head_reverse" align="center">
+	        <span xml:lang="es" lang="es">Versión 2</span>
+
+	      </th></tr></thead><tbody><tr><td align="center">
+		<pre class="programlisting">#include &lt;stdio.h&gt;
+struct package
+{
+    int q;
+};
+
+void set_value(struct package data, int value)
+{
+    data.q = value;
+}
+
+int main()
+{
+    struct package p;
+    p.q = 10;
+    set_value(p, 20);
+    printf("Value = %d\n", p.q);
+    return 0;
+}</pre>
+              </td><td align="center">
+		<pre class="programlisting">#include &lt;stdio.h&gt;
+struct package
+{
+    int q;
+};
+
+void set_value(struct package *d_ptr, int value)
+{
+    d_ptr-&gt;q = value;
+}
+
+int main()
+{
+    struct package p;
+    p.q = 10;
+    set_value(&amp;p, 20);
+    printf("Value = %d\n", p.q);
+    return 0;
+}</pre>
+              </td></tr></tbody></table></div><p xml:lang="es" lang="es">La versión 1 del programa imprime el valor 10 por
+      pantalla, y la versión 2 imprime el valor 20. Explica por qué.</p><div class="note" title="Sugerencia"><h3 class="title">
+	  <span xml:lang="es" lang="es">Sugerencia</span>
+
+	</h3><p xml:lang="es" lang="es">Puedes copiar y pegar el código en un fichero en tu
+	entorno de desarrollo y verificar que los dos programas se comportan tal
+	y como se dice.</p></div></li><li class="listitem"><p xml:lang="es" lang="es">¿Qué cantidad de memoria ocupan estas dos estructuras?
+      ¿Cuál es su diferencia?</p><pre xml:lang="es" class="programlisting" lang="es">info_celda t[SIZE];
+cell_info *t[SIZE];</pre></li><li class="listitem"><p xml:lang="es" lang="es">Una aplicación de gestión de fotografías en tu móvil tiene
+      definido el catálogo de fotos de la siguiente forma:</p><pre class="programlisting">#define SIZE_NAME
+
+struct picture_info
+{
+    char name[SIZE_NAME];
+    int date_time;
+} pictures[SIZE];</pre><p xml:lang="es" lang="es">¿Qué tamaño tiene esta estructura de datos? La aplicación
+      necesita crear una segunda tabla del mismo número de elementos, pero en lugar de tener
+      los datos de las fotos quiere tener los punteros a los datos de las
+      fotos. En otras palabras, es una tabla con idéntico número de elementos
+      que la anterior, pero sus elementos no son estructuras sino punteros a las
+      correspondientes estructuras de la tabla <code class="code">pictures</code>. Escribe la
+      declaración y el código para rellenar esa tabla.</p></li><li class="listitem"><p xml:lang="es" lang="es">Se dispone de la siguiente definición de datos:</p><pre class="programlisting">#define SIZE 4
+struct coordinates
+{
+    int latitude;
+    int longitude;
+} places[SIZE];
+
+places[0].latitude  = 200;
+places[0].longitude = 300;
+places[1].latitude  = 400;
+places[1].longitude = 100;
+places[2].latitude  = 100;
+places[2].longitude = 400;
+places[3].latitude  = 300;
+places[3].longitude = 200;</pre><p xml:lang="es" lang="es">La tabla almacena cuatro puntos obtenidos del GPS de tu
+      móvil, cada uno de ellos con su latitud y longitud que son números
+      enteros. Hay una aplicación que ha obtenido estos puntos en este orden,
+      pero necesita acceder a los datos de tres formas distintas. La primera es
+      en el orden en que han sido obtenidos, y por tanto, tal y como está la
+      tabla. El segundo es ordenados crecientemente por latitud y el tercero
+      ordenados crecientemente por longitud. El acceso a estos datos en base a
+      estos tres órdenes es continuo. Una primera solución podría ser reordenar
+      los elementos de la tabla cada vez que se cambia de orden (por ejemplo,
+      llega una petición de datos ordenados por latitud, pero la anterior se
+      ordenaron por longitud, y entonces se reordena la tabla). Pero es
+      extremadamente ineficiente. ¿Por qué? ¿Crees que utilizando punteros
+      puedes ofrecer una alternativa más eficiente que evite reordenar los datos
+      continuamente?</p></li></ol></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s09.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s11.html">Siguiente</a></td></tr><tr><td width="40%" align="left" valign="top">9. <span xml:lang="es" lang="es">Autoevaluación automática</span> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Inicio</a></td><td width="40%" align="right" valign="top"> 11.
+    <span xml:lang="es" lang="es">Actividades</span>
+  </td></tr></table></div><div id="adagio_page_footer"><a href="http://www.uc3m.es">© Universidad Carlos III de
+	Madrid</a> |
+    <a id="cc_license_icon" href="http://creativecommons.org/licenses/by-nc-sa/3.0/es/">Licencia Creative
+	Commons</a></div><script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script><script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-1318950-7");
+        pageTracker._trackPageview();
+      </script></body></html>

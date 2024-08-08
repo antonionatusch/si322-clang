@@ -1,0 +1,15 @@
+div.adagio_fm_browser
+{
+    margin: 1em 0 1em 0;
+    height: 400px;
+}
+
+/* .navheader {
+  background-image: url(HeadGradient.png); 
+  background-repeat: repeat-x;
+} */
+
+#adagio_page_header_level1
+{
+    display: none;
+}
