@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
   ptr = &x;
   printf("%d\n", x);
-  printf("%d\n", &x);
+  printf("%p\n", &x);
   printf("%d\n", *ptr);
 
   return 0;
