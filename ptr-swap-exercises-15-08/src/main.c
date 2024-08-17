@@ -32,6 +32,7 @@ void genericSwap(void *a, void *b, size_t s) {
 int main(int argc, char *argv[]) {
   int first_num = 5, second_num = 2;
   float third_num = 2.5, fourth_num = 9.0;
+  char msg1[] = "hello", msg2[] = "world!";
 
   printf("first b4 swap: %d, second b4 swap: %d\n", first_num, second_num);
   swapInts(&first_num, &second_num);
@@ -52,6 +53,8 @@ int main(int argc, char *argv[]) {
   printf("first b4 genericSwap: %f, second: %f\n", third_num, fourth_num);
   genericSwap(&third_num, &fourth_num, sizeof(third_num));
   printf("first after genericSwap: %f, second: %f\n", third_num, fourth_num);
-
+  printf("%s %s\n", msg1, msg2);
+  genericSwap(&msg1, &msg2, sizeof(msg1)/sizeof(msg1[0]));
+  printf("%s %s\n", msg1, msg2);
   return 0;
 }
