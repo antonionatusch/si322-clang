@@ -28,8 +28,6 @@ void MaxAndMin(int *arr_ptr, int *max_ptr, int *min_ptr, int size) {
   for (int i = 0; i < size; i++) {
     if (*max_ptr > arr_ptr[i])
       *max_ptr = arr_ptr[i];
-  }
-  for (int i = 0; i < size; i++) {
     if (*min_ptr < arr_ptr[i])
       *min_ptr = arr_ptr[i];
   }
@@ -52,7 +50,7 @@ int main(int argc, char *argv[]) {
   int a[3] = {10, 20,
               30}; // en cuanto a los punteros, el nombre de un arreglo apunta a
                    // la dirección de memoria del primer elemento.
-  int b[5] = {10, 80, 90, 40, 50};
+  int b[10] = {10, 80, 90, 40, 50, 88, 2, 78, 10, 42};
   int a_size = sizeof(a) / sizeof(a[0]);
   int b_size = sizeof(b) / sizeof(b[0]);
   //  int *a_ptr = a;
