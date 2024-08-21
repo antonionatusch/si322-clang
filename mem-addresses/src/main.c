@@ -1,3 +1,4 @@
+#include "pt2.c"
 #include <stdbool.h>
 #include <stdio.h>
 int sum(int *ptr_array, int size) {
@@ -45,7 +46,8 @@ bool IsSorted(int *arr_ptr, int size) {
   return true;
 }
 
-int main(int argc, char *argv[]) {
+void demo_pt1() {
+
   int max, min;
   int a[3] = {10, 20,
               30}; // en cuanto a los punteros, el nombre de un arreglo apunta a
@@ -63,5 +65,23 @@ int main(int argc, char *argv[]) {
   printf("min of array: %d, max of array %d\n", max, min);
   printf("is a sorted? %b\n", IsSorted(a, a_size));
   printf("is b sorted? %b\n", IsSorted(b, b_size));
+}
+
+void arr_print(int *arr, int size) {
+  for (int i = 0; i < size; i++) {
+    printf("%d\n", arr[i]);
+  }
+}
+
+int main(int argc, char *argv[]) {
+  int initial_array[2] = {10, 20};
+  int val_to_ins = 30;
+  int *new_array = NULL;
+  new_array = generic_insert(initial_array, sizeof(initial_array),  2 *  sizeof(initial_array[0]),
+                                  &val_to_ins, sizeof(val_to_ins));
+  printf("old arr\n");
+  arr_print(initial_array, sizeof(initial_array) / sizeof(initial_array[0]));
+  printf("new arr\n");
+  arr_print(new_array, (sizeof(initial_array) / sizeof(initial_array[0])) + 1);
   return 0;
 }
