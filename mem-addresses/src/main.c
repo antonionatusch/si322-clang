@@ -74,14 +74,47 @@ void arr_print(int *arr, int size) {
 }
 
 int main(int argc, char *argv[]) {
-  int initial_array[2] = {10, 20};
+  /* int initial_array[2] = {10, 20};
   int val_to_ins = 30;
   int *new_array = NULL;
-  new_array = generic_insert(initial_array, sizeof(initial_array),  2 *  sizeof(initial_array[0]),
-                                  &val_to_ins, sizeof(val_to_ins));
+  new_array = generic_insert(initial_array, sizeof(initial_array),
+                             2 * sizeof(initial_array[0]), &val_to_ins,
+                             sizeof(val_to_ins));
   printf("old arr\n");
   arr_print(initial_array, sizeof(initial_array) / sizeof(initial_array[0]));
   printf("new arr\n");
   arr_print(new_array, (sizeof(initial_array) / sizeof(initial_array[0])) + 1);
+  new_array = generic_delete(initial_array, sizeof(initial_array),
+                             2 * sizeof(int), sizeof(int));
+
+  printf("New array after deletion:\n");
+  arr_print(new_array, sizeof(new_array)/(sizeof(new_array[0])-1)); */
+
+  int *initial_array = malloc(4 * sizeof(int));
+  if (initial_array == NULL) {
+    printf("No se pudo asignar memoria.\n");
+    return 1;
+  }
+
+  initial_array[0] = 10;
+  initial_array[1] = 20;
+  initial_array[2] = 30;
+  initial_array[3] = 40;
+
+  int size = 4;
+
+  printf("Old array:\n");
+  arr_print(initial_array, size);
+
+  // Eliminar el elemento en el índice 2 (elemento 30)
+  int *new_array = generic_delete(initial_array, size * sizeof(int),
+                                  2 * sizeof(int), sizeof(int));
+
+  printf("New array after deletion:\n");
+  arr_print(new_array, size - 1);
+
+  // Liberar la memoria de los arreglos
+  free(new_array);
+
   return 0;
 }

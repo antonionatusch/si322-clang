@@ -25,3 +25,18 @@ void *generic_insert(void *arr, unsigned arr_size, unsigned idx,
 }
 
 // TODO: generic_delete
+void *generic_delete(void *arr, unsigned arr_size, unsigned idx,
+                     unsigned sizeval) {
+  void *new_arr = malloc(arr_size - sizeval);
+
+  if (!new_arr)
+    return NULL;
+
+  memcpy(new_arr, arr, idx);
+
+  memcpy(new_arr + idx, arr + idx + sizeval, arr_size - idx - sizeval);
+
+  free(arr);
+
+  return new_arr;
+}
