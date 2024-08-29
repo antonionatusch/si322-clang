@@ -19,13 +19,24 @@ int main(int argc, char *argv[]) {
     }
   }
   print_matrix(a, 3, 4);
-  printf("\n");
-  swap_row((void**)a, 0, 1);
+  printf("swapping rows\n");
+  swap_row((void **)a, 0, 1);
   print_matrix(a, 3, 4);
-  printf("\n");
+  printf("printing matrix as if it were inferior triangular\n");
   print_inferior_triangular_matrix(a, 3);
+  printf("creating an inferior triangular matrix\n");
   int **b = create_inferior_triangular_matrix(3);
   print_matrix(b, 3, 3);
+  printf("printing the created matrix\n");
   print_inferior_triangular_matrix(b, 3);
+  printf("swapping a matrix columns, 2nd with 3rd\n");
+  swap_columns(a, 1, 2, 3);
+  printf("result\n");
+  print_matrix(a, 3, 4);
+  printf("creating a superiortriangular matrix\n");
+  int **c = create_superior_triangular_matrix(3);
+  print_matrix(c, 3, 3);
+  printf("printing the created matrix\n");
+  print_superior_triangular_matrix(c, 3);
   return 0;
 }

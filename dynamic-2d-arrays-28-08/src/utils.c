@@ -16,37 +16,61 @@ void print_matrix(int **matrix, int rows, int columns) {
   }
 }
 
-void print_inferior_triangular_matrix(int** a, int n) {
-  for (int i = 0; i < n; i++){
+void print_inferior_triangular_matrix(int **a, int n) {
+  for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      if (i < j) printf("0, ");
-      else printf("%d, ", a[i][j]);
+      if (i < j)
+        break;
+      else
+        printf("%d, ", a[i][j]);
     }
     printf("\n");
   }
 }
 
-void print_superior_triangular_matrix(int** a, int n) {
-  for (int i = 0; i < n; i++){
+void print_superior_triangular_matrix(int **a, int n) {
+  for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      if (i > j) continue;
-      else printf("%d, ", a[i][j]);
+      if (j < i)
+        printf("none, ");
+      else
+        printf("%d, ", a[i][j]);
     }
     printf("\n");
   }
 }
 
 int **create_inferior_triangular_matrix(int n) {
-  int **a;
-  a = (int **)malloc(n*sizeof(int));
+  int **a = (int **)malloc(n * sizeof(int *));
   for (int i = 0; i < n; i++) {
-    a[i] = (int * )malloc((i+1)*sizeof(int));
+    a[i] = (int *)malloc((i + 1) * sizeof(int));
+  }
+  int valor = 1;
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j <= i; ++j) {
+      a[i][j] = valor++;
+    }
   }
   return a;
 }
-void swap_columns(int **arr, int first_col, int second_cold, int rows) {
+int **create_superior_triangular_matrix(int n) {
+  int **a = (int **)malloc(n * sizeof(int *));
+  for (int i = 0; i < n; i++) {
+    a[i] = (int *)malloc((n - i) * sizeof(int));
+  }
+  int valor = 1;
+  for (int i = 0; i < n; ++i) {
+    for (int j = n - 1; j >= i; --j) {
+      a[i][j] = valor++;
+    }
+  }
+  return a;
+}
+void swap_columns(int **arr, int first_col, int second_col, int rows) {
   int tmp;
-  for (int i = 0; i < rows, i++;) {
-
+  for (int i = 0; i < rows; i++) {
+    tmp = arr[i][first_col];
+    arr[i][first_col] = arr[i][second_col];
+    arr[i][second_col] = tmp;
   }
 }
