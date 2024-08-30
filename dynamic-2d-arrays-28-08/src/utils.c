@@ -32,7 +32,7 @@ void print_superior_triangular_matrix(int **a, int n) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       if (j < i)
-        printf("none, ");
+        printf("   ");
       else
         printf("%d, ", a[i][j]);
     }
