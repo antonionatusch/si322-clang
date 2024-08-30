@@ -38,5 +38,23 @@ int main(int argc, char *argv[]) {
   print_matrix(c, 3, 3);
   printf("printing the created matrix\n");
   print_superior_triangular_matrix(c, 3);
+  printf("creating another superior triangular matrix\n");
+  int **d = create_superior_triangular_matrix(4);
+  print_matrix(d, 4, 4);
+  printf("printing the created matrix\n");
+  print_superior_triangular_matrix(d, 4);
+  for (int i = 0; i < 3; i++) {
+    free(a[i]);
+    free(b[i]);
+    free(c[i]);
+  }
+  free(a);
+  free(b);
+  free(c);
+
+  for (int i = 0; i < 4; i++) {
+    free(d[i]);
+  }
+  free(d);
   return 0;
 }
