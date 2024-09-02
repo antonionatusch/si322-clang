@@ -1,0 +1,14 @@
+Rúbrica para el primer parcial: Existe un ejercicio que debe resolver usando punteros, y del resto de los ejercicios
+debe hacer pruebas de escritorio para entender la lógica de punteros en estructuras en lenguaje "C".
+Debe hacer funcionar cada ejercicio y probar los valores de salida propuestos en el código y en algunos casos debe usted colocar los valores.
+El examen del primer parcial será individual y estará dividido en dos partes:
+En la Primera parte se le pedirá que haga una prueba de escritorio en la pizarra de alguna lógica de cualquiera de los ejercicios propuestos  y tendrá un valor del 30% y la otra parte se le pedirá que haga algún cambio en el
+código de cualquiera de los ejercicios propuestos, incluyendo del primero que esta en Word y tendrá una valor del 70%.
+
+ejemplo de prueba de escritorio: haga la prueba de escritorio de crear...
+"que hace x linea..."
+ej de designacion de espacio de memoria pa un puntero:
+
+int *ptr;
+ptr = (int*)malloc(sizeof(int));
+designacion con malloc = heap, declaracion convencional = stack
