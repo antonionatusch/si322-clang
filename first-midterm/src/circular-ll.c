@@ -110,5 +110,8 @@ int main() {
   printf("deleting element at pos 3\n");
   Delete(Head, 3);
   RDisplay(Head);
+  printf("inserting element '9' at index 0\n");
+  Insert(Head, 0, 9);
+  RDisplay(Head);
   return 0;
 }
